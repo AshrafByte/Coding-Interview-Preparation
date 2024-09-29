@@ -35,5 +35,3 @@ class Solution(object):
         
         return True
 
-sol = Solution()
-print(sol.isAnagram('a', 'ab'))
