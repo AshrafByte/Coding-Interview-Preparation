@@ -30,3 +30,44 @@ public:
         return ( (0 <= r && r <= rl) && (0 <= c && c <= cl) );
     }
 };
+
+////////////////////////////////////////////////////////////////////////////////
+class Solution
+{
+public:
+    vector<vector<int>> image;
+    int color;
+    int srcColor;
+    vector<vector<int>> floodFill(vector<vector<int>> &image, int sr, int sc, int color)
+    {
+        this -> image = image;
+        this -> color = color;
+        this -> srcColor = image[sr][sc];
+        fill(sr, sc);
+        return this -> image;
+    }
+
+    void fill(int r, int c)
+    {
+        // rl -> rows limit , cl -> cols limit
+
+        if (!validCell(r, c))
+            return;
+
+        if (image[r][c] != srcColor || image[r][c] == color)
+            return;
+
+        image[r][c] = color;
+
+        fill(r - 1, c);
+        fill(r + 1, c);
+        fill(r, c - 1);
+        fill(r, c + 1);
+    }
+    bool validCell(int r, int c)
+    {
+        int rl = image.size() - 1;
+        int cl = image[0].size() - 1;
+        return ((0 <= r && r <= rl) && (0 <= c && c <= cl));
+    }
+};
