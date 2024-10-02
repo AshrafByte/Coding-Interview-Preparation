@@ -1,0 +1,21 @@
+class Solution
+{
+public:
+    int longestPalindrome(string s)
+    {
+        unordered_map <char,int> freq;
+        for (auto const &c : s)
+            freq[c]++;
+        
+        int cnt = 0;
+        bool odd= false;
+
+        for (auto &e : freq)
+        {
+            cnt += (e.second) / 2;
+            if (!odd && e.second % 2 != 0)
+                odd = true;
+        }
+        return (cnt*2 + odd) ;
+    }
+};
