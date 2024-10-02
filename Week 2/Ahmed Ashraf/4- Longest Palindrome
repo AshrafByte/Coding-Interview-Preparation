@@ -13,7 +13,7 @@ public:
         for (auto &e : freq)
         {
             cnt += (e.second) / 2;
-            if (!odd && e.second % 2 != 0)
+            if (e.second % 2 != 0)
                 odd = true;
         }
         return (cnt*2 + odd) ;
